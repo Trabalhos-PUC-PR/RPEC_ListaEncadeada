@@ -51,12 +51,23 @@ public class ListaEncadeadaAD {
         }
     }
 
-    // a lista ja ta ordenada previamente? e se tiver [0, 2, 3, 2]????
+ // a lista ja ta ordenada previamente? e se tiver [0, 2, 3, 2]????
     public void insereOrdenado(int valor) {
-    	NoAD dado = primeiro;
-    	while(dado.get<=valor) {
-    		
-    	}
+        NoAD dado = primeiro;
+            while(dado != null) {
+                if(dado.getProximo() == null) {
+                    insereUltimo(valor);
+                    return;
+                }else {
+                    if(dado.getProximo().getDado() >= valor) {
+                        NoAD novo = new NoAD(valor);
+                        novo.setProximo(dado.getProximo());
+                        dado.setProximo(novo);
+                        return;
+                    }
+                    dado = dado.getProximo();    
+                }
+            }
     }
     
     public void imprime() {
